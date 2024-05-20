@@ -1,27 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import DataTable from "react-data-table-component";
-import FormComponent from "./FormComponent";
 
-const DataTableComponent = (props) => {
-  const [selectedRow, setSelectedRow] = useState(null);
-  const [isFormVisible, setFormVisible] = useState(false);
-  const [data, setData] = useState(props.data);
-
+const DataTableComponent = ({ columns, data, onRowClick }) => {
   const handleRowClicked = (row) => {
-    setSelectedRow(row);
-    setFormVisible(true);
-  };
-
-  const handleUpdate = (updatedRow) => {
-    setData((prevData) =>
-      prevData.map((row) => (row.id === updatedRow.id ? updatedRow : row))
-    );
+    onRowClick(row);
   };
 
   return (
     <>
       <DataTable
-        columns={props.columns}
+        columns={columns}
         data={data}
         pagination
         paginationPerPage={5}
@@ -37,13 +25,6 @@ const DataTableComponent = (props) => {
         }}
         onRowClicked={handleRowClicked}
       />
-      {isFormVisible && (
-        <FormComponent
-          row={selectedRow}
-          onClose={() => setFormVisible(false)}
-          onUpdate={handleUpdate}
-        />
-      )}
     </>
   );
 };

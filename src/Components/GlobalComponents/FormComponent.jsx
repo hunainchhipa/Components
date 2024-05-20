@@ -1,10 +1,25 @@
 import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const FormComponent = ({ row, onClose, onUpdate }) => {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    mobile: "",
+  });
 
   useEffect(() => {
-    setFormData(row);
+    if (row) {
+      setFormData(row);
+    } else {
+      setFormData({
+        first_name: "",
+        last_name: "",
+        email: "",
+        mobile: "",
+      });
+    }
   }, [row]);
 
   const handleChange = (e) => {
@@ -18,27 +33,26 @@ const FormComponent = ({ row, onClose, onUpdate }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onUpdate(formData);
-    onClose();
   };
-
-  if (!row) return null;
 
   return (
     <div className="container mt-4 p-4 border rounded bg-light">
       <button className="close" onClick={onClose}>
         &times;
       </button>
-      <h2>Details</h2>
+      <h2>{row ? "Edit Record" : "Create New Record"}</h2>
       <form onSubmit={handleSubmit}>
-        {Object.entries(formData).map(([key, value]) => (
+        {Object.keys(formData).map((key) => (
           <div className="form-group" key={key}>
-            <label htmlFor={key}><strong>{key}</strong></label>
+            <label htmlFor={key}>
+              <strong>{key.replace("_", " ")}</strong>
+            </label>
             <input
               type="text"
               className="form-control"
               id={key}
               name={key}
-              value={value}
+              value={formData[key]}
               onChange={handleChange}
             />
           </div>
