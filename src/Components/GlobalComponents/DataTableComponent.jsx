@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DataTable from "react-data-table-component";
-import FormComponent from "./FormComponent"; // Assuming FormComponent is in the same directory
+import FormComponent from "./FormComponent";
 
 const DataTableComponent = (props) => {
   const [selectedRow, setSelectedRow] = useState(null);
