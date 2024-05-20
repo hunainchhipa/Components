@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import DataTable from "react-data-table-component";
 
-const DataTableComponent = (props) => {
-  const [filteredData, setFilteredData] = useState(props?.data);
+const DataTableComponent = ({ columns, data, onRowClick }) => {
+  const [filteredData, setFilteredData] = useState(data);
 
   const onSearch = (e) => {
-    const filtered = props.data.filter(
+    const filtered = data.filter(
       (item) =>
         item.first_name.toLowerCase().includes(e.target.value.toLowerCase()) ||
         item.last_name.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setFilteredData(filtered);
   };
+  const handleRowClicked = (row) => {
+    onRowClick(row);
+  };
+const DataTableComponent = () => {
+  
+
   return (
     <>
       <div className="text-end mb-2">
@@ -23,7 +29,7 @@ const DataTableComponent = (props) => {
         />
       </div>
       <DataTable
-        columns={props.columns}
+        columns={columns}
         data={filteredData}
         pagination
         paginationPerPage={5}
@@ -37,6 +43,7 @@ const DataTableComponent = (props) => {
             },
           },
         }}
+        onRowClicked={handleRowClicked}
       />
     </>
   );

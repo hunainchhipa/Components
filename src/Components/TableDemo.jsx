@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import DataTableComponent from "./GlobalComponents/DataTableComponent";
 import dummyData from "./DB";
 import { useNavigate } from "react-router-dom";
+import FormComponent from "./GlobalComponents/FormComponent";
 
 const TableDemo = () => {
   const navigate = useNavigate();
+  const [data, setData] = useState(dummyData);
+  const [isFormVisible, setFormVisible] = useState(false);
+  const [selectedRow, setSelectedRow] = useState(null);
 
   const columns = [
     {
@@ -34,6 +38,32 @@ const TableDemo = () => {
     },
   ];
 
+  const handleCreateNew = () => {
+    setSelectedRow(null);
+    setFormVisible(true);
+  };
+
+  const handleRowClick = (row) => {
+    setSelectedRow(row);
+    setFormVisible(true);
+  };
+
+  const handleUpdate = (newOrUpdatedRow) => {
+    if (selectedRow) {
+      setData((prevData) =>
+        prevData.map((row) =>
+          row.id === newOrUpdatedRow.id ? newOrUpdatedRow : row
+        )
+      );
+    } else {
+      setData((prevData) => [
+        ...prevData,
+        { ...newOrUpdatedRow, id: prevData.length + 1 },
+      ]);
+    }
+    setFormVisible(false);
+  };
+
   return (
     <>
       <div className="container my-5">
@@ -46,7 +76,23 @@ const TableDemo = () => {
             Back
           </button>
         </div>
-        <DataTableComponent columns={columns} data={dummyData} />
+        <div className="mb-3 text-right">
+          <button className="btn btn-primary" onClick={handleCreateNew}>
+            Create New
+          </button>
+        </div>
+        <DataTableComponent
+          columns={columns}
+          data={data}
+          onRowClick={handleRowClick}
+        />
+        {isFormVisible && (
+          <FormComponent
+            row={selectedRow}
+            onClose={() => setFormVisible(false)}
+            onUpdate={handleUpdate}
+          />
+        )}
       </div>
     </>
   );
