@@ -12,6 +12,12 @@ const Home = () => {
         >
           Data Table
         </button>
+        <button
+          className="btn btn-outline-secondary"
+          onClick={() => navigate("/charts")}
+        >
+          Charts
+        </button>
       </div>
     </>
   );
