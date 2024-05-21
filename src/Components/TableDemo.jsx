@@ -1,68 +1,62 @@
-import React, { useState } from "react";
+import React from "react";
 import DataTableComponent from "./GlobalComponents/DataTableComponent";
 import dummyData from "./DB";
 import { useNavigate } from "react-router-dom";
-import FormComponent from "./GlobalComponents/FormComponent";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const TableDemo = () => {
   const navigate = useNavigate();
-  const [data, setData] = useState(dummyData);
-  const [isFormVisible, setFormVisible] = useState(false);
-  const [selectedRow, setSelectedRow] = useState(null);
 
   const columns = [
     {
       name: "Sr. No",
       selector: (row) => row.id,
+      searchKey: "id",
       sortable: true,
     },
     {
       name: "First Name",
       selector: (row) => row.first_name,
+      searchKey: "first_name",
       sortable: true,
     },
     {
       name: "Last Name",
       selector: (row) => row.last_name,
+      searchKey: "last_name",
       sortable: true,
     },
     {
       name: "Email",
       selector: (row) => row.email,
+      searchKey: "email",
       sortable: true,
     },
     {
       name: "Mobile",
       selector: (row) => row.mobile,
+      searchKey: "mobile",
       sortable: true,
     },
+    {
+      name: "Action",
+      searchKey: "action",
+      cell: (row) => (
+        <>
+          {/* Todo: edit and delete record */}
+          <FontAwesomeIcon
+            icon={faPen}
+            className="edit-icon fs-6 me-3 text-secondary"
+          />
+          <FontAwesomeIcon
+            icon={faTrash}
+            className="edit-icon fs-6 text-danger"
+          />
+        </>
+      ),
+    },
   ];
-
-  const handleCreateNew = () => {
-    setSelectedRow(null);
-    setFormVisible(true);
-  };
-
-  const handleRowClick = (row) => {
-    setSelectedRow(row);
-    setFormVisible(true);
-  };
-
-  const handleUpdate = (newOrUpdatedRow) => {
-    if (selectedRow) {
-      setData((prevData) =>
-        prevData.map((row) =>
-          row.id === newOrUpdatedRow.id ? newOrUpdatedRow : row
-        )
-      );
-    } else {
-      setData((prevData) => [
-        ...prevData,
-        { ...newOrUpdatedRow, id: prevData.length + 1 },
-      ]);
-    }
-    setFormVisible(false);
-  };
 
   return (
     <>
@@ -76,23 +70,7 @@ const TableDemo = () => {
             Back
           </button>
         </div>
-        <div className="mb-3 text-right">
-          <button className="btn btn-primary" onClick={handleCreateNew}>
-            Create New
-          </button>
-        </div>
-        <DataTableComponent
-          columns={columns}
-          data={data}
-          onRowClick={handleRowClick}
-        />
-        {isFormVisible && (
-          <FormComponent
-            row={selectedRow}
-            onClose={() => setFormVisible(false)}
-            onUpdate={handleUpdate}
-          />
-        )}
+        <DataTableComponent columns={columns} data={dummyData} />
       </div>
     </>
   );

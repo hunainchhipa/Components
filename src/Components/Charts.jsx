@@ -4,6 +4,8 @@ import PieChart from "./Charts/PieChart";
 import ColumnChart from "./Charts/ColumnChart";
 import LineChart from "./Charts/LineChart";
 import Line_Column_AreaChart from "./Charts/Line_Column_AreaChart";
+import TimelineChart from "./Charts/TimelineChart";
+import DonutChart from "./Charts/DonutChart";
 
 const Charts = () => {
   const navigate = useNavigate();
@@ -22,8 +24,13 @@ const Charts = () => {
         <div className="row">
           <div className="col-md-6">
             <div className="card h-100">
-              <div className="card-body d-flex justify-content-center align-items-center">
-                <PieChart />
+              <div className="card-body">
+                <div className="d-flex flex-column justify-content-between align-items-center h-100">
+                  <PieChart />
+                  <div className="text-center mt-2">
+                    <h3 className="text-secondary">Pie Chart</h3>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -31,6 +38,9 @@ const Charts = () => {
             <div className="card h-100">
               <div className="card-body">
                 <ColumnChart />
+                <div className="text-center mt-2">
+                  <h3 className="text-secondary">Column Chart</h3>
+                </div>
               </div>
             </div>
           </div>
@@ -39,6 +49,9 @@ const Charts = () => {
             <div className="card h-100">
               <div className="card-body">
                 <LineChart />
+                <div className="text-center mt-2">
+                  <h3 className="text-secondary">Line Chart</h3>
+                </div>
               </div>
             </div>
           </div>
@@ -46,6 +59,32 @@ const Charts = () => {
             <div className="card h-100">
               <div className="card-body">
                 <Line_Column_AreaChart />
+                <div className="text-center mt-2">
+                  <h3 className="text-secondary">Line, Column & Area Chart</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-6 mt-4">
+            <div className="card h-100">
+              <div className="card-body">
+                <TimelineChart />
+                <div className="text-center mt-2">
+                  <h3 className="text-secondary">Timeline Chart</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-6 mt-4">
+            <div className="card h-100">
+              <div className="card-body">
+                <div className="d-flex flex-column justify-content-between align-items-center h-100">
+                  <DonutChart />
+                  <div className="text-center mt-2">
+                    <h3 className="text-secondary">Donut Chart</h3>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
