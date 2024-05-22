@@ -42,6 +42,7 @@ const TableDemo = () => {
     {
       name: "Action",
       searchKey: "action",
+      invisible: true,
       cell: (row) => (
         <>
           {/* Todo: edit and delete record */}
