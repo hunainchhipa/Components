@@ -5,12 +5,12 @@ const ColumnChart = (props) => {
   const [chartData, setChartData] = useState({
     series: [
       {
-        name: "Net Profit",
-        data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
+        name: props.y1Label,
+        data: props.y1Data,
       },
       {
-        name: "Revenue",
-        data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
+        name: props.y2Label,
+        data: props.y2Data,
       },
     ],
     options: {
@@ -21,7 +21,7 @@ const ColumnChart = (props) => {
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: "55%",
+          columnWidth: "65%",
           endingShape: "rounded",
         },
       },
@@ -34,21 +34,11 @@ const ColumnChart = (props) => {
         colors: ["transparent"],
       },
       xaxis: {
-        categories: [
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-        ],
+        categories: props.xData,
       },
       yaxis: {
         title: {
-          text: "$ (thousands)",
+          text: props.yTitle,
         },
       },
       fill: {
@@ -65,7 +55,7 @@ const ColumnChart = (props) => {
   });
 
   return (
-    <div>
+    <>
       <div id="chart">
         <ReactApexChart
           options={chartData.options}
@@ -75,7 +65,7 @@ const ColumnChart = (props) => {
         />
       </div>
       <div id="html-dist"></div>
-    </div>
+    </>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 
-const Line_Column_AreaChart = (props) => {
+const LineColumnAreaChart = (props) => {
   const [chartData, setChartData] = useState({
     series: [
       {
@@ -102,4 +102,4 @@ const Line_Column_AreaChart = (props) => {
   );
 };
 
-export default Line_Column_AreaChart;
+export default LineColumnAreaChart;
