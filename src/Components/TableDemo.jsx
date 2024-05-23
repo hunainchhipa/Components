@@ -8,55 +8,30 @@ import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 const TableDemo = () => {
   const navigate = useNavigate();
 
-  const columns = [
-    {
-      name: "Sr. No",
-      selector: (row) => row.id,
-      searchKey: "id",
-      sortable: true,
-    },
-    {
-      name: "First Name",
-      selector: (row) => row.first_name,
-      searchKey: "first_name",
-      sortable: true,
-    },
-    {
-      name: "Last Name",
-      selector: (row) => row.last_name,
-      searchKey: "last_name",
-      sortable: true,
-    },
-    {
-      name: "Email",
-      selector: (row) => row.email,
-      searchKey: "email",
-      sortable: true,
-    },
-    {
-      name: "Mobile",
-      selector: (row) => row.mobile,
-      searchKey: "mobile",
-      sortable: true,
-    },
-    {
-      name: "Action",
-      searchKey: "action",
-      cell: (row) => (
-        <>
-          {/* Todo: edit and delete record */}
-          <FontAwesomeIcon
-            icon={faPen}
-            className="edit-icon fs-6 me-3 text-secondary"
-          />
-          <FontAwesomeIcon
-            icon={faTrash}
-            className="edit-icon fs-6 text-danger"
-          />
-        </>
-      ),
-    },
-  ];
+  const keys = Object.keys(dummyData[0]);
+  const columns = keys.map((key) => ({
+    name: key.replace(/_/g, " ").replace(/\b\w/g, (char) => char.toUpperCase()),
+    selector: (row) => row[key],
+    searchKey: key,
+    sortable: true,
+  }));
+
+  columns.push({
+    name: "Action",
+    searchKey: "action",
+    cell: (row) => (
+      <>
+        <FontAwesomeIcon
+          icon={faPen}
+          className="edit-icon fs-6 me-3 text-secondary"
+        />
+        <FontAwesomeIcon
+          icon={faTrash}
+          className="edit-icon fs-6 text-danger"
+        />
+      </>
+    ),
+  });
 
   return (
     <>
