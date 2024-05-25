@@ -12,6 +12,7 @@ const DataTableComponent = ({ data, handleDelete, actions }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [selectedRecord, setSelectedRecord] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [editCell, setEditCell] = useState(null);
 
   useEffect(() => {
     setDataState(data);
@@ -23,6 +24,22 @@ const DataTableComponent = ({ data, handleDelete, actions }) => {
     selector: (row) => row[key],
     searchKey: key,
     sortable: true,
+    cell: (row) => {
+      const isEditing = editCell && editCell.id === row.id && editCell.field === key;
+      return isEditing ? (
+        <input
+          type="text"
+          value={row[key]}
+          onChange={(e) => handleCellChange(e, row.id, key)}
+          onBlur={() => handleCellSave(row.id, key)}
+          autoFocus
+        />
+      ) : (
+        <span onClick={() => setEditCell({ id: row.id, field: key })}>
+          {row[key]}
+        </span>
+      );
+    },
   }));
 
   const {
@@ -71,7 +88,6 @@ const DataTableComponent = ({ data, handleDelete, actions }) => {
         item.id === formData.id ? formData : item
       );
     }
-    // TODO: need to save record in database when done with demodata
     setDataState(updatedData);
     setIsFormOpen(false);
     setCurrentPage(Math.ceil(updatedData.length / 5));
@@ -79,6 +95,20 @@ const DataTableComponent = ({ data, handleDelete, actions }) => {
 
   const handleCancel = () => {
     setIsFormOpen(false);
+  };
+
+  const handleCellChange = (e, id, field) => {
+    const updatedData = dataState.map((item) => {
+      if (item.id === id) {
+        return { ...item, [field]: e.target.value };
+      }
+      return item;
+    });
+    setDataState(updatedData);
+  };
+
+  const handleCellSave = (id, field) => {
+    setEditCell(null);
   };
 
   if (actions) {
