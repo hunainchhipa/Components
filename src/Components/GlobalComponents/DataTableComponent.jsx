@@ -107,6 +107,7 @@ const DataTableComponent = ({ data, handleDelete, actions }) => {
           onDelete={() => handleDelete(row.id)}
         />
       ),
+      invisible: true,
     });
   }
 
