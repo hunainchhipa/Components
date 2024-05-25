@@ -31,7 +31,7 @@ const withHotkey = (Component, hotkey) => {
               zIndex: 1,
             }}
           >
-            Alt + {hotkey.toUpperCase()}
+            {hotkey.toUpperCase()}
           </span>
         )}
       </div>
