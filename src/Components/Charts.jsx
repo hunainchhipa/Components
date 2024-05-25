@@ -7,6 +7,7 @@ import LineColumnAreaChart from "./Charts/LineColumnAreaChart";
 import TimelineChart from "./Charts/TimelineChart";
 import DonutChart from "./Charts/DonutChart";
 import BubbleChart from "./Charts/BubbleChart";
+import WrappedButton from "./GlobalComponents/WrappedButton";
 
 const Charts = () => {
   const navigate = useNavigate();
@@ -15,12 +16,13 @@ const Charts = () => {
       <div className="container my-5">
         <div className="d-flex justify-content-between align-items-center mb-3">
           <h1 className="text-secondary fw-bold mb-0">Charts!</h1>
-          <button
+          <WrappedButton
             className="btn btn-outline-secondary"
             onClick={() => navigate("/")}
+            hotkey="b"
           >
             Back
-          </button>
+          </WrappedButton>
         </div>
         <div className="row">
           <div className="col-md-6">

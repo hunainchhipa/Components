@@ -5,6 +5,7 @@ import DataTableWrapper from "./DataTableWrapper";
 import FormView from "./FormView";
 import EditableCell from "./EditableCell";
 import ActionCell from "./ActionCell";
+import WrappedButton from "./WrappedButton"
 import "./DataTableComponent.css";
 
 const DataTableComponent = ({ data, handleDelete, actions }) => {
@@ -129,9 +130,13 @@ const DataTableComponent = ({ data, handleDelete, actions }) => {
             suggestions={suggestions}
             onSuggestionClick={onSuggestionClick}
           />
-          <button className="btn btn-primary mb-3" onClick={handleNewClick}>
+          <WrappedButton 
+            className="btn btn-primary mb-3" 
+            onClick={handleNewClick}
+            hotkey="n"
+          >
             New Record
-          </button>
+          </WrappedButton>
           <DataTableWrapper
             columns={generatedColumns}
             data={filteredData}

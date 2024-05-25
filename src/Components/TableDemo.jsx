@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import DataTableComponent from "./GlobalComponents/DataTableComponent";
 import dummyData from "./DB";
 import { useNavigate } from "react-router-dom";
+import WrappedButton from "./GlobalComponents/WrappedButton";
 
 const TableDemo = () => {
   const navigate = useNavigate();
@@ -16,12 +17,13 @@ const TableDemo = () => {
     <div className="container my-5">
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h1 className="text-secondary fw-bold mb-0">Data Table!</h1>
-        <button
-          className="btn btn-outline-secondary"
-          onClick={() => navigate("/")}
-        >
-          Back
-        </button>
+        <WrappedButton
+            className="btn btn-outline-secondary"
+            onClick={() => navigate("/")}
+            hotkey="b"
+          >
+            Back
+          </WrappedButton>
       </div>
       <DataTableComponent
         data={data}
