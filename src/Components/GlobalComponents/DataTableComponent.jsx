@@ -3,20 +3,29 @@ import useSearch from "../hooks/useSearch";
 import SearchBar from "./SearchBar";
 import DataTableWrapper from "./DataTableWrapper";
 import FormView from "./FormView";
+import EditableCell from "./EditableCell";
+import ActionCell from "./ActionCell";
 import "./DataTableComponent.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const DataTableComponent = ({ data, handleDelete, actions }) => {
   const [dataState, setDataState] = useState(data);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [selectedRecord, setSelectedRecord] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [editCell, setEditCell] = useState(null);
 
   useEffect(() => {
     setDataState(data);
   }, [data]);
+
+  const handleCellSave = (id, field, value) => {
+    const updatedData = dataState.map((item) => {
+      if (item.id === id) {
+        return { ...item, [field]: value };
+      }
+      return item;
+    });
+    setDataState(updatedData);
+  };
 
   const keys = Object.keys(data[0]);
   const generatedColumns = keys.map((key) => ({
@@ -24,22 +33,12 @@ const DataTableComponent = ({ data, handleDelete, actions }) => {
     selector: (row) => row[key],
     searchKey: key,
     sortable: true,
-    cell: (row) => {
-      const isEditing = editCell && editCell.id === row.id && editCell.field === key;
-      return isEditing ? (
-        <input
-          type="text"
-          value={row[key]}
-          onChange={(e) => handleCellChange(e, row.id, key)}
-          onBlur={() => handleCellSave(row.id, key)}
-          autoFocus
-        />
-      ) : (
-        <span onClick={() => setEditCell({ id: row.id, field: key })}>
-          {row[key]}
-        </span>
-      );
-    },
+    cell: (row) => (
+      <EditableCell
+        value={row[key]}
+        onSave={(newValue) => handleCellSave(row.id, key, newValue)}
+      />
+    ),
   }));
 
   const {
@@ -97,37 +96,15 @@ const DataTableComponent = ({ data, handleDelete, actions }) => {
     setIsFormOpen(false);
   };
 
-  const handleCellChange = (e, id, field) => {
-    const updatedData = dataState.map((item) => {
-      if (item.id === id) {
-        return { ...item, [field]: e.target.value };
-      }
-      return item;
-    });
-    setDataState(updatedData);
-  };
-
-  const handleCellSave = (id, field) => {
-    setEditCell(null);
-  };
-
   if (actions) {
     generatedColumns.push({
       name: "Action",
       searchKey: "action",
       cell: (row) => (
-        <>
-          <FontAwesomeIcon
-            icon={faPen}
-            className="edit-icon fs-6 me-3 text-secondary"
-            onClick={() => handleRowClick(row)}
-          />
-          <FontAwesomeIcon
-            icon={faTrash}
-            className="edit-icon fs-6 text-danger"
-            onClick={() => handleDelete(row.id)}
-          />
-        </>
+        <ActionCell
+          onEdit={() => handleRowClick(row)}
+          onDelete={() => handleDelete(row.id)}
+        />
       ),
     });
   }
