@@ -2,9 +2,9 @@ import React from "react";
 import DataTable from "react-data-table-component";
 
 const DataTableWrapper = ({ columns, data, onRowClicked }) => {
-  const handleRowClicked = (row) => {
-    onRowClicked(row);
-  };
+  // const handleRowClicked = (row) => {
+  //   onRowClicked(row);
+  // };
 
   return (
     <DataTable
@@ -14,7 +14,7 @@ const DataTableWrapper = ({ columns, data, onRowClicked }) => {
       paginationPerPage={5}
       paginationRowsPerPageOptions={[5, 10, 25, 50, 75, 100]}
       striped
-      onRowClicked={handleRowClicked}
+      // onRowClicked={handleRowClicked}
       customStyles={{
         headRow: {
           style: {
