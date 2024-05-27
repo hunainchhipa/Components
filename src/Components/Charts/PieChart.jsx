@@ -3,7 +3,7 @@ import ReactApexChart from "react-apexcharts";
 
 const ApexChart = (props) => {
   const [chartData, setChartData] = useState({
-    series: [60, 35, 15],
+    series: props.data,
     options: {
       chart: {
         width: 380,
@@ -12,7 +12,7 @@ const ApexChart = (props) => {
       legend: {
         position: "bottom",
       },
-      labels: ["Team A", "Team B", "Team C"],
+      labels: props.labels,
       responsive: [
         {
           breakpoint: 480,
