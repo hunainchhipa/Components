@@ -21,6 +21,13 @@ const Home = () => {
         >
           Charts
         </WrappedButton>
+        <WrappedButton
+          className="btn btn-outline-secondary"
+          onClick={() => navigate("/odoo")}
+          hotkey={"c"}
+        >
+          Odoo Connector
+        </WrappedButton>
       </div>
     </>
   );
