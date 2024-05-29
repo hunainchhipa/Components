@@ -28,6 +28,13 @@ const Home = () => {
         >
           Odoo Connector
         </WrappedButton>
+        <WrappedButton
+          className="btn btn-outline-secondary"
+          onClick={() => navigate("/vita")}
+          hotkey={"v"}
+        >
+          Dr. Vita
+        </WrappedButton>
       </div>
     </>
   );
