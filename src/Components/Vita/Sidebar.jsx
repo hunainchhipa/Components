@@ -1,6 +1,7 @@
 import React from "react";
+import WrappedButton from "../GlobalComponents/WrappedButton";
 
-const Sidebar = () => {
+const Sidebar = ({ encounters, onNewEncounter }) => {
   return (
     <>
       <div className="sidebar-otr px-3">
@@ -8,8 +9,22 @@ const Sidebar = () => {
           <h4 className="fw-bold">Dr. Vita</h4>
         </div>
         <div className="new-chat">
-          <button className="new-chat-btn w-100">+ New Chat</button>
+        <WrappedButton
+            className="new-chat-btn w-100"
+            onClick={onNewEncounter}
+            hotkey="n"
+          >
+            + New Encounter
+          </WrappedButton>
         </div>
+        <div className="list-group">
+        {encounters.map(encounter => (
+          <div key={encounter.id} className="list-group-item mt-3">
+            <p className="mb-0">Encounter</p>
+            <small className="text-muted">{encounter.status}</small>
+          </div>
+        ))}
+      </div>
       </div>
     </>
   );
