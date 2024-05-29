@@ -3,8 +3,11 @@ import WrappedButton from "../GlobalComponents/WrappedButton";
 import axios from "axios";
 import odoo_logo from "../../assets/images/odoo_logo.png";
 import useSpeechToText from "../hooks/useSpeechToText";
+import { useNavigate } from "react-router-dom";
 
 const OdooConnector = () => {
+  const navigate = useNavigate();
+
   const [inputValue, setInputValue] = useState("");
   const { isListening, transcript, startListening, stopListening } =
     useSpeechToText({ continuous: true });
@@ -48,7 +51,17 @@ const OdooConnector = () => {
 
   return (
     <>
-      <div className="d-flex gap-2 flex-column justify-content-center align-items-center vh-100">
+      <div className="d-flex container my-5 justify-content-between align-items-center mb-3">
+          <h1 className="text-secondary fw-bold mb-0">Odoo Connector!</h1>
+          <WrappedButton
+            className="btn btn-outline-secondary"
+            onClick={() => navigate("/")}
+            hotkey="b"
+          >
+            Back
+          </WrappedButton>
+      </div>
+      <div className="d-flex gap-2 flex-column justify-content-center align-items-center mt-5 py-5">
         <img className="w-25" src={odoo_logo} />
         <div className="d-flex gap-2 w-50 mt-5">
           <input
