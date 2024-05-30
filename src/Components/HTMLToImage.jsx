@@ -211,7 +211,11 @@ const HTMLToImage = () => {
         {image && (
           <>
             <h3>Generated Image:</h3>
-            <img src={image} alt="agreement" />
+            <div className="card" style={{ width: "fit-content" }}>
+              <div className="card-body">
+                <img src={image} alt="agreement" />
+              </div>
+            </div>
           </>
         )}
       </div>

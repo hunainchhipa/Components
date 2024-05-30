@@ -6,7 +6,7 @@ const Encounter = ({ currentEncounter, setCurrentEncounter }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="container p-4" style={{ flex: 1 }}>
+    <div className="body-otr">
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h2>Encounter</h2>
         <div className="d-flex">

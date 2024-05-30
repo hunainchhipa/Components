@@ -57,7 +57,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="d-flex">
+    <>
       <Sidebar
         encounters={encounters}
         onNewEncounter={handleNewEncounter}
@@ -67,7 +67,7 @@ const App = () => {
         currentEncounter={currentEncounter}
         setCurrentEncounter={setCurrentEncounter}
       />
-    </div>
+    </>
   );
 };
 
