@@ -35,6 +35,13 @@ const Home = () => {
         >
           Dr. Vita
         </WrappedButton>
+        <WrappedButton
+          className="btn btn-outline-secondary"
+          onClick={() => navigate("/html-to-image")}
+          hotkey={"h"}
+        >
+          HTML to Image
+        </WrappedButton>
       </div>
     </>
   );

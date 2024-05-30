@@ -15,5 +15,25 @@
   background-color: #fff;
   padding: 7px;
   border-radius: 7px;
-  border: 1px solid #c8c4c4;
+  border: 1px solid #ebe7e7;
+  transition: 0.1s ease-in-out;
+}
+.new-chat .new-chat-btn:hover {
+  background-color: #f5f7fa;
+  border: 1px solid #dcd6d6;
+}
+.history-box {
+  background-color: #dce0e9;
+  padding: 2px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.chat-history .chat-day {
+  font-size: 10px;
+}
+.history-box .chat-title {
+  font-size: 15px;
+}
+.history-box .chat-description {
+  font-size: 12px;
 }
