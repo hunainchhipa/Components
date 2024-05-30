@@ -24,7 +24,7 @@ const Home = () => {
         <WrappedButton
           className="btn btn-outline-secondary"
           onClick={() => navigate("/odoo")}
-          hotkey={"c"}
+          hotkey={"o"}
         >
           Odoo Connector
         </WrappedButton>
