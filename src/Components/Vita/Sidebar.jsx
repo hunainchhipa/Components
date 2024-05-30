@@ -11,17 +11,6 @@ const Sidebar = ({ encounters, onNewEncounter }) => {
           <h4 className="fw-bold">Dr. Vita</h4>
         </div>
         <div className="new-chat">
-          <button className="new-chat-btn w-100 fs-6">+ New Chat</button>
-        </div>
-        <div className="chat-history mt-3">
-          <span className="chat-day fw-bold text-secondary">TODAY</span>
-          <div className="history-box mt-1">
-            <span className="chat-title">Chat</span>
-            <p className="chat-description text-secondary mb-0">
-              Not Started - 0 min
-            </p>
-            <FontAwesomeIcon icon={faTrashCan} />
-          </div>
           <WrappedButton
             className="new-chat-btn w-100"
             onClick={onNewEncounter}
@@ -32,9 +21,22 @@ const Sidebar = ({ encounters, onNewEncounter }) => {
         </div>
         <div className="list-group">
           {encounters.map((encounter) => (
-            <div key={encounter.id} className="list-group-item mt-3">
-              <p className="mb-0">Encounter</p>
-              <small className="text-muted">{encounter.status}</small>
+            <div key={encounter.id} className="chat-history mt-3">
+              <span className="chat-day fw-bold text-secondary">TODAY</span>
+              <div className="history-box mt-1 d-flex justify-content-between align-items-center">
+                <div>
+                  <span className="chat-title">Encounter</span>
+                  <p className="chat-description text-secondary mb-0">
+                    {encounter.status}
+                  </p>
+                </div>
+                <div>
+                  <FontAwesomeIcon
+                    className="text-secondary"
+                    icon={faTrashCan}
+                  />
+                </div>
+              </div>
             </div>
           ))}
         </div>

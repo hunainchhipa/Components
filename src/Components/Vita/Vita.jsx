@@ -8,16 +8,22 @@ const App = () => {
   const [currentEncounter, setCurrentEncounter] = useState("");
 
   const handleNewEncounter = () => {
-    const newEncounter = { id: encounters.length + 1, status: "Not started · 0 min" };
+    const newEncounter = {
+      id: encounters.length + 1,
+      status: "Not started · 0 min",
+    };
     setEncounters([...encounters, newEncounter]);
     setCurrentEncounter("");
   };
 
   return (
-      <div className="d-flex">
-        <Sidebar encounters={encounters} onNewEncounter={handleNewEncounter} />
-        <Encounter currentEncounter={currentEncounter} setCurrentEncounter={setCurrentEncounter} />
-      </div>
+    <div className="d-flex">
+      <Sidebar encounters={encounters} onNewEncounter={handleNewEncounter} />
+      <Encounter
+        currentEncounter={currentEncounter}
+        setCurrentEncounter={setCurrentEncounter}
+      />
+    </div>
   );
 };
 

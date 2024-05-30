@@ -7,8 +7,8 @@
 .sidebar-otr {
   width: 300px;
   background-color: #f5f7fa;
-  height: 100vh;
   border-right: 1px solid #e7e3e3;
+  padding-bottom: 15px;
 }
 
 .new-chat .new-chat-btn {

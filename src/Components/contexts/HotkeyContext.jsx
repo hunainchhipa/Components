@@ -1,8 +1,18 @@
-import React, { createContext, useContext, useCallback, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useCallback,
+  useState,
+  useEffect,
+} from "react";
 
 const HotkeyContext = createContext();
 
 export const useHotkey = () => useContext(HotkeyContext);
+
+export const OS = (window) => {
+  console.log("getOperatingSystem(window)", getOperatingSystem(window));
+};
 
 const HotkeyProvider = ({ children }) => {
   const [hotkeys, setHotkeys] = useState({});
@@ -23,12 +33,15 @@ const HotkeyProvider = ({ children }) => {
     });
   }, []);
 
-  const handleKeyDown = useCallback((event) => {
-    if (event.altKey && hotkeys[event.key]) {
-      event.preventDefault();
-      hotkeys[event.key]();
-    }
-  }, [hotkeys]);
+  const handleKeyDown = useCallback(
+    (event) => {
+      if (event.altKey && hotkeys[event.key]) {
+        event.preventDefault();
+        hotkeys[event.key]();
+      }
+    },
+    [hotkeys]
+  );
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
@@ -52,7 +65,9 @@ const HotkeyProvider = ({ children }) => {
   }, []);
 
   return (
-    <HotkeyContext.Provider value={{ registerHotkey, unregisterHotkey, showHotkeys }}>
+    <HotkeyContext.Provider
+      value={{ registerHotkey, unregisterHotkey, showHotkeys }}
+    >
       {children}
     </HotkeyContext.Provider>
   );

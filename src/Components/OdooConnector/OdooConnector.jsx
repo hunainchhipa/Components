@@ -52,17 +52,18 @@ const OdooConnector = () => {
   return (
     <>
       <div className="d-flex container my-5 justify-content-between align-items-center mb-3">
-          <h1 className="text-secondary fw-bold mb-0">Odoo Connector!</h1>
-          <WrappedButton
-            className="btn btn-outline-secondary"
-            onClick={() => navigate("/")}
-            hotkey="b"
-          >
-            Back
-          </WrappedButton>
+        {/* <h1 className="text-secondary fw-bold mb-0">Odoo Connector!</h1> */}
+        <h1 className="text-secondary fw-bold mb-0">Speech to Text!</h1>
+        <WrappedButton
+          className="btn btn-outline-secondary"
+          onClick={() => navigate("/")}
+          hotkey="b"
+        >
+          Back
+        </WrappedButton>
       </div>
       <div className="d-flex gap-2 flex-column justify-content-center align-items-center mt-5 py-5">
-        <img className="w-25" src={odoo_logo} />
+        {/* <img className="w-25" src={odoo_logo} /> */}
         <div className="d-flex gap-2 w-50 mt-5">
           <input
             className="form-control form-control-lg"
