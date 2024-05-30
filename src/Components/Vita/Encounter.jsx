@@ -1,4 +1,3 @@
-// Encounter.js
 import React from "react";
 import WrappedButton from "../GlobalComponents/WrappedButton";
 import { useNavigate } from "react-router-dom";
