@@ -8,6 +8,7 @@ import HotkeyProvider from "./Components/contexts/HotkeyContext";
 import OdooConnector from "./Components/OdooConnector/OdooConnector";
 import HTMLToImage from "./Components/HTMLToImage";
 import Vita from "./Components/Vita/Vita";
+import MyForm from "./Page/MyForm";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/myform" element={<MyForm />} />
             <Route path="/data-table" element={<TableDemo />} />
             <Route path="/charts" element={<Charts />} />
             <Route path="/odoo" element={<OdooConnector />} />

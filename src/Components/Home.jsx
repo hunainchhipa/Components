@@ -16,6 +16,13 @@ const Home = () => {
         </WrappedButton>
         <WrappedButton
           className="btn btn-outline-secondary"
+          onClick={() => navigate("/myform")}
+          hotkey={"f"}
+        >
+          My Form
+        </WrappedButton>
+        <WrappedButton
+          className="btn btn-outline-secondary"
           onClick={() => navigate("/charts")}
           hotkey={"c"}
         >
