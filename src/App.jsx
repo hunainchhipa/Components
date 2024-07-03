@@ -9,6 +9,7 @@ import OdooConnector from "./Components/OdooConnector/OdooConnector";
 import HTMLToImage from "./Components/HTMLToImage";
 import Vita from "./Components/Vita/Vita";
 import MyForm from "./Page/MyForm";
+import ContactFrom from "./Components/ContactForm";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/odoo" element={<OdooConnector />} />
             <Route path="/vita" element={<Vita />} />
             <Route path="/html-to-image" element={<HTMLToImage />} />
+            <Route path="/contact-us" element={<ContactFrom />} />
           </Routes>
         </Router>
       </HotkeyProvider>

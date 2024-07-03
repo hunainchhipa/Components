@@ -58,3 +58,19 @@
 .sidebar-footer:hover {
   background-color: #e9ecf6;
 }
+
+/* Email Sender CSS Start */
+.contact-form {
+  border-radius: 10px;
+  max-width: 500px;
+  margin: auto;
+}
+.contact-form .btn.btn-warning {
+  background-color: #f07839;
+  color: #fff;
+}
+.contact-form .btn.btn-warning:focus {
+  box-shadow: none;
+  color: #fff;
+}
+/* Email Sender CSS End */

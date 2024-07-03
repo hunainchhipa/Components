@@ -49,6 +49,13 @@ const Home = () => {
         >
           HTML to Image
         </WrappedButton>
+        <WrappedButton
+          className="btn btn-outline-secondary"
+          onClick={() => navigate("/contact-us")}
+          hotkey={"e"}
+        >
+          Contact Us
+        </WrappedButton>
       </div>
     </>
   );
