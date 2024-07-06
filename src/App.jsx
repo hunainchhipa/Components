@@ -9,26 +9,43 @@ import OdooConnector from "./Components/OdooConnector/OdooConnector";
 import HTMLToImage from "./Components/HTMLToImage";
 import Vita from "./Components/Vita/Vita";
 import MyForm from "./Page/MyForm";
-import ContactFrom from "./Components/ContactForm";
+import ContactForm from "./Components/ContactForm";
+import ProtectedRoute from "./ProtectedRoute";
+import NoAccess from "./Page/NoAccess";
+import { AuthProvider } from "./Components/contexts/AuthContext";
+
+const ProtectedComponent = () => {
+  return <div>This is a protected component</div>;
+};
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       <HotkeyProvider>
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route
+              path="/protected"
+              element={
+                <ProtectedRoute
+                  element={<ProtectedComponent />}
+                  requiredPermissions={["read"]}
+                />
+              }
+            />
+            <Route path="/no-access" element={<NoAccess />} />
             <Route path="/myform" element={<MyForm />} />
             <Route path="/data-table" element={<TableDemo />} />
             <Route path="/charts" element={<Charts />} />
             <Route path="/odoo" element={<OdooConnector />} />
             <Route path="/vita" element={<Vita />} />
             <Route path="/html-to-image" element={<HTMLToImage />} />
-            <Route path="/contact-us" element={<ContactFrom />} />
+            <Route path="/contact-us" element={<ContactForm />} />
           </Routes>
         </Router>
       </HotkeyProvider>
-    </>
+    </AuthProvider>
   );
 }
 
