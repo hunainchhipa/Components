@@ -18,18 +18,14 @@ const TableDemo = () => {
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h1 className="text-secondary fw-bold mb-0">Data Table!</h1>
         <WrappedButton
-            className="btn btn-outline-secondary"
-            onClick={() => navigate("/")}
-            hotkey="b"
-          >
-            Back
-          </WrappedButton>
+          className="btn btn-outline-secondary"
+          onClick={() => navigate("/")}
+          hotkey="b"
+        >
+          Back
+        </WrappedButton>
       </div>
-      <DataTableComponent
-        data={data}
-        handleDelete={handleDelete}
-        actions
-      />
+      <DataTableComponent data={data} handleDelete={handleDelete} actions />
     </div>
   );
 };

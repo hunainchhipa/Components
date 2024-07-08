@@ -17,6 +17,40 @@
   height: 100vh;
   /* padding: 0 10px; */
 }
+.btn.btn-primary {
+  background-color: #222222;
+  color: #fff;
+  border-color: #222222;
+}
+.contact-form .form-control {
+  box-shadow: none !important;
+  border-radius: 3px !important;
+  border-color: transparent !important;
+  padding: 10px 15px !important;
+  background-color: #fafafa !important;
+}
+.contact-form .form-control:focus {
+  border-color: #222222 !important;
+}
+textarea {
+  resize: none !important;
+}
+.form-control.is-invalid,
+.was-validated .form-control:invalid,
+.form-control.is-valid,
+.was-validated .form-control:valid {
+  background-image: none !important;
+  padding-right: 12px !important;
+}
+.form-control.is-valid,
+.was-validated .form-control:valid {
+  border-color: transparent !important;
+}
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
+  border-color: #de3c52 !important;
+}
+
 .new-chat .new-chat-btn {
   background-color: #fff;
   padding: 7px;
@@ -61,16 +95,43 @@
 
 /* Email Sender CSS Start */
 .contact-form {
-  border-radius: 10px;
-  max-width: 500px;
+  max-width: 900px;
   margin: auto;
 }
-.contact-form .btn.btn-warning {
-  background-color: #f07839;
-  color: #fff;
+.contact-form h1 {
+  font-family: "Roboto", sans-serif; /* Choose a modern font */
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: #222222;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
-.contact-form .btn.btn-warning:focus {
-  box-shadow: none;
+.contact-form h1 span {
+  display: inline-block;
+  color: #1679ab; /* Accent color */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.contact-form h1:hover {
+  color: #444444;
+  transform: scale(1.04); /* Slight scaling effect */
+}
+.contact-form h1 span:hover {
+  color: #222222;
+  transform: scale(1.07); /* Slight scaling effect */
+}
+
+.send-btn {
+  background-color: #222222;
   color: #fff;
+  border: 1px solid #222222;
+  border-radius: 3px;
+  padding: 10px;
+  width: 50%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.send-btn:hover {
+  background-color: #333333;
+  transform: scale(1.05);
 }
 /* Email Sender CSS End */
