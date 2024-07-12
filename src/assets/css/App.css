@@ -93,6 +93,10 @@ textarea {
   background-color: #e9ecf6;
 }
 
+.dropdown-toggle::after {
+  display: none !important;
+}
+
 /* Email Sender CSS Start */
 .contact-form {
   max-width: 900px;

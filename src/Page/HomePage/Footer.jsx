@@ -29,7 +29,9 @@ const Footer = () => {
           </ul>
         </div>
         <div className="footer-company text-center md:text-right">
-          <h3 className="text-2xl font-bold mb-2">Tech Innovators</h3>
+          <h3 className="text-2xl font-bold mb-2 text-black">
+            Tech Innovators
+          </h3>
           <p className="text-gray-400">
             Leading platform for coworking space solutions. Connecting you to
             the best workspaces near you.

@@ -4,7 +4,7 @@ import heroImage from "./heroimage.jpg"; // Ensure the correct path to your imag
 const HeroSection = () => {
   return (
     <section
-      className="h-screen bg-cover bg-center relative flex items-center justify-center mt-16"
+      className="h-screen bg-cover bg-center relative flex items-center justify-center"
       style={{ backgroundImage: `url(${heroImage})` }}
     >
       <div className="absolute inset-0 bg-black opacity-50"></div>

@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 const MediaCard = ({ workspace, onClick }) => {
   return (
     <div onClick={onClick} className="cursor-pointer">
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ width: 320 }}>
         <CardMedia
           sx={{ height: 140 }}
           image={workspace.image}

@@ -15,7 +15,7 @@ const WorkspaceDetail = () => {
   const workspace = workspaceData.find((ws) => ws.id === parseInt(id));
   const [startDate, setStartDate] = useState(new Date());
   const [timeRange, setTimeRange] = useState([9, 17]);
-  const [showPopup, setShowPopup] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     // Scroll to top on id change
@@ -31,11 +31,13 @@ const WorkspaceDetail = () => {
   };
 
   const openPopup = () => {
-    setShowPopup(true);
+    // setShowPopup(true);
+    setShowModal(true);
   };
 
   const closePopup = () => {
-    setShowPopup(false);
+    // setShowPopup(false);
+    setShowModal(false);
   };
 
   const handlePayment = () => {
@@ -54,7 +56,7 @@ const WorkspaceDetail = () => {
   return (
     <div>
       <Header />
-      <div className="workspace-detail-container py-16">
+      <div className="workspace-detail-container">
         <div className="container mx-auto px-4">
           <div className="workspace-detail-header mb-8 mt-16">
             <h1 className="text-4xl font-bold">{workspace.name}</h1>
@@ -105,8 +107,15 @@ const WorkspaceDetail = () => {
                     </p>
                   </div>
                 </div>
+                {/* <button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                  onClick={openPopup}
+                >
+                  Checkout
+                </button> */}
                 <button
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                  type="button"
                   onClick={openPopup}
                 >
                   Checkout
@@ -115,11 +124,43 @@ const WorkspaceDetail = () => {
             </div>
           </div>
         </div>
-        <CustomPopup show={showPopup} handleClose={closePopup}>
-          <h2 className="text-xl font-bold mb-4">Payment</h2>
-          <p>Amount: {workspace.price}</p>
+        <CustomPopup show={showModal} handleClose={closePopup}>
+          <h2 className="text-xl font-bold mb-4 border-bottom-2">Payment</h2>
+          <div className="d-flex gap-3 justify-content-between">
+            <div className="w-25 h-25 text-center">
+              <h6>Workspace</h6>
+              <img
+                src={workspace.image}
+                alt={workspace.name}
+                className="rounded-lg"
+              />
+            </div>
+            <div className="text-center">
+              <h6>Name</h6>
+              <p className="mt-16">{workspace.name}</p>
+            </div>
+            <div className="text-center">
+              <h6>Price</h6>
+              <p className="mt-16">{workspace.price}</p>
+            </div>
+            <div className="text-center">
+              <h6>Total</h6>
+              <p className="mt-16">{workspace.price}</p>
+            </div>
+            <div className="text-center">
+              <h6>Remove</h6>
+              <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-12">
+                Remove
+              </button>
+            </div>
+          </div>
+          <div className="mt-5 d-flex justify-content-between border-bottom-2">
+            <h5>Cart Total</h5>
+            <p>Amount: {workspace.price}</p>
+          </div>
+
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded me-2"
             onClick={handlePayment}
           >
             Pay Now

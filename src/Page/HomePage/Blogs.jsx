@@ -23,7 +23,7 @@ const blogs = [
 
 const Blogs = () => {
   return (
-    <section className="blogs-section py-16">
+    <section className="blogs-section py-16 container">
       <h2 className="text-3xl font-bold mb-8 text-center">From Our Blog</h2>
       <div className="blogs-grid grid grid-cols-1 md:grid-cols-3 gap-8">
         {blogs.map((blog) => (

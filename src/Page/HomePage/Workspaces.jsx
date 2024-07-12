@@ -44,7 +44,7 @@ const Workspaces = () => {
       <h2 className="text-3xl font-bold mb-8 text-center">
         Explore Our Workspaces
       </h2>
-      <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="container place-items-center mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {workspaces.map((workspace) => (
           <MediaCard
             key={workspace.id}
