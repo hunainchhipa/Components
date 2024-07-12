@@ -10,12 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@coreui/coreui": "^5.0.2",
+    "@coreui/icons": "^3.0.1",
+    "@coreui/icons-react": "^2.2.1",
+    "@coreui/react": "^5.1.0",
     "@emailjs/browser": "^4.3.3",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.1",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
+    "core-js": "^3.37.1",
     "dotenv": "^16.4.5",
     "html2canvas": "^1.4.1",
     "react": "^18.2.0",
